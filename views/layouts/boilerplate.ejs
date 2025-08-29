@@ -31,7 +31,14 @@
 </head>
 <body>
     
-    <%- include("../includes/navbar.ejs") %>
+    <% 
+      const currentPath = typeof path !== 'undefined' ? path : '';
+      const hideNavbarOn = ['/login', '/signup'];
+      const shouldShowNavbar = !hideNavbarOn.includes(currentPath);
+    %>
+    <% if (shouldShowNavbar) { %>
+      <%- include("../includes/navbar.ejs") %>
+    <% } %>
     
     <div class="container">
      <%- include("../includes/flash.ejs") %>
